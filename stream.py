@@ -51,8 +51,13 @@ def random_mouse_move():
         driver.execute_script("window.scrollBy(0, 250);")
         time.sleep(1)
 
+
+
 # Lặp qua từng liên kết đã chọn
 for link in selected_links:
+    driver.get("https://www.dailymotion.com/playlist/x9dd5m")
+    time.sleep(random.uniform(60, 130))
+    driver.save_screenshot("screenshot_{}.png".format(time.time()))
     driver.get(link)
     time.sleep(random.uniform(1, 30))  # Thời gian nghỉ ngẫu nhiên giữa các liên kết
     random_mouse_move()
@@ -92,7 +97,7 @@ for link in selected_links:
             break
 
     driver.save_screenshot("screenshot_{}.png".format(time.time()))
-    time.sleep(random.uniform(600, 800))  # Thời gian nghỉ ngẫu nhiên giữa các lượt
+    time.sleep(random.uniform(300, 600))  # Thời gian nghỉ ngẫu nhiên giữa các lượt
 
 driver.quit()
 
