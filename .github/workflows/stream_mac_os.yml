@@ -1,9 +1,9 @@
-name: Streamtape windows
+name: Streamtape mac
 
 on:
   workflow_dispatch:
-  schedule:
-     - cron: '*/19 * * * *'
+  # schedule:
+  #    - cron: '*/19 * * * *'
 
 
 jobs:
