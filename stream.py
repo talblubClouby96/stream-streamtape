@@ -17,7 +17,14 @@ link_list = [
 "https://streamtape.com/v/XkqbbZeW7WuDY3Z/TikTok_Id_taka2003cter_2025_01_27_15_44_57.mp4",
 "https://streamtape.com/v/oWeGQMq7MKFJJyY/TikTok_Id_abskwkws_2025.02.13_07-26-15.mp4",
 "https://streamtape.com/v/vDpjlyaGoPtD14/HAPPY_NEW_YEAR_ASIAN_Lunar_New_Year_BIG_UPDATE.%EF%BF%BD%EF%BF%BDSTRAIGHT_07.mp4",
-"https://streamtape.com/v/jaK9zOOZyzUzeZD/NEW_CLIP_UPDATE_FUCK_STRAIGH_GUY_TK1107.mp4"
+"https://streamtape.com/v/jaK9zOOZyzUzeZD/NEW_CLIP_UPDATE_FUCK_STRAIGH_GUY_TK1107.mp4",
+    "https://streamtape.com/v/8BdO9Mweaztog0j/TK_taka2003cter_2025.02.15_14-45-52.mp4",
+    "https://streamtape.com/v/29aKmLYQ8KSWgB/TikTok_Id_inuya299_2025.02.16_14-36-24.mp4",
+    "https://streamtape.com/v/8vBl161rowT8jm/TikTok_Id_inuya299_2025_02_07_14_54_05.mp4",
+    "https://streamtape.com/v/VBQXaqQdPOTKrRp/TikTok_Id_inuya299_2025_02_02_14_42_51.mp4",
+    "https://streamtape.com/v/llJbWp2epRC7MDA/TikTok_Id_inuya299_2025_02_03_14_34_25.mp4",
+    "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4",
+    "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4"
 ]
 time.sleep(random.uniform(60, 200))
 # Lựa chọn 3 liên kết ngẫu nhiên
