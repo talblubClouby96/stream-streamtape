@@ -26,7 +26,7 @@ jobs:
         uses: browser-actions/setup-chrome@v1
         id: setup-chrome
         with:
-          chrome-version: '132'
+          chrome-version: '133'
           install-dependencies: true
 
       - name: Set CHROMEDRIVER_PATH environment variable
