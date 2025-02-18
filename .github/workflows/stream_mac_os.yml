@@ -20,7 +20,7 @@ jobs:
            python-version: '3.10'
         
       - name: Install dependencies
-        run: pip install undetected-chromedriver selenium pyvirtualdisplay pyautogui fake-useragent
+        run: pip install undetected-chromedriver selenium google-colab-selenium pyautogui fake-useragent
       
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
