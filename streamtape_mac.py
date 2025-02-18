@@ -28,6 +28,13 @@ link_list = [
     "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4",
     "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4"
 ]
+
+import google_colab_selenium as gs
+
+driver = gs.Chrome()
+driver.get("https://www.dailymotion.com/playlist/x9dd5m")
+driver.quit()
+
 time.sleep(random.uniform(60, 200))
 # Lựa chọn 3 liên kết ngẫu nhiên
 selected_links = random.sample(link_list, 2)
@@ -41,8 +48,8 @@ options.add_argument('--start-maximized')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--disable-gpu')
-
-driver = uc.Chrome(executable_path="/Users/runner/hostedtoolcache/setup-chrome/chromium/132.0.6834.159/arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing", options=options)
+driver = uc.Chrome(options=options)
+#driver = uc.Chrome(executable_path="/Users/runner/hostedtoolcache/setup-chrome/chromium/132.0.6834.159/arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing", options=options)
 driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 
 # Di chuyển chuột ngẫu nhiên
