@@ -42,7 +42,7 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--disable-gpu')
 
-driver = uc.Chrome(executable_path=chromedriver_path, options=options)
+driver = uc.Chrome(executable_path="/Users/runner/hostedtoolcache/setup-chrome/chromium/132.0.6834.159/arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing", options=options)
 driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 
 # Di chuyển chuột ngẫu nhiên
