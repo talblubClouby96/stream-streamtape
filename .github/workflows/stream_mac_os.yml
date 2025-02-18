@@ -24,12 +24,17 @@ jobs:
       
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
         with:
-          chrome-version: 132
-          install-chromedriver: true
+          chrome-version: '120'
+          install-dependencies: true
+
+      - name: Set CHROMEDRIVER_PATH environment variable
+        run: |
+          echo "CHROMEDRIVER_PATH=${{ steps.setup-chrome.outputs.chrome-path }}/chromedriver" >> $GITHUB_ENV
 
       - name: Run Selenium script
-        run: python stream.py
+        run:  python streamtape_mac.py
         
       - name: Archive screenshots
         uses: actions/upload-artifact@v4
