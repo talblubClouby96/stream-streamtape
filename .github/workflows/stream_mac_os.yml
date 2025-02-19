@@ -3,12 +3,15 @@ name: Streamtape mac
 on:
   workflow_dispatch:
   # schedule:
-  #    - cron: '*/19 * * * *'
+  #    - cron: '*/11 * * * *'
 
 
 jobs:
   capture_screenshots:
-    runs-on: macos-latest
+    strategy:
+      matrix:
+        runs-on: [ macos-latest,  macos-latest,  macos-latest, macos-latest,  macos-latest ]  # 7 instances
+    runs-on: ${{ matrix.runs-on }}
     
     steps:
       - name: Checkout code
