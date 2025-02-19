@@ -3,7 +3,7 @@ name: Streamtape windows
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/17 * * * *'
+     - cron: '*/11 * * * *'
 
 
 jobs:
