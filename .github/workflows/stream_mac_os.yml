@@ -31,6 +31,7 @@ jobs:
         with:
           chrome-version: '133'
           install-dependencies: true
+          install-chromedriver: true
       
       - name: After Set up Chrome
         run: chrome --version
