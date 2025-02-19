@@ -28,7 +28,7 @@ link_list = [
 ]
 time.sleep(random.uniform(60, 150))
 # Lựa chọn 3 liên kết ngẫu nhiên
-selected_links = random.sample(link_list, 1)
+selected_links = random.sample(link_list, 2)
 
 # Khởi tạo driver
 options = webdriver.ChromeOptions()
