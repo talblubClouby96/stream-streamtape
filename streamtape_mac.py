@@ -34,9 +34,9 @@ import chromedriver_autoinstaller
 
 chromedriver_autoinstaller.install()
 
-time.sleep(random.uniform(60, 200))
+time.sleep(random.uniform(60, 120))
 # Lựa chọn 3 liên kết ngẫu nhiên
-selected_links = random.sample(link_list, 2)
+selected_links = random.sample(link_list, 1)
 
 # Khởi tạo driver
 options = webdriver.ChromeOptions()
@@ -113,6 +113,6 @@ for link in selected_links:
             break
 
     driver.save_screenshot("screenshot_{}.png".format(time.time()))
-    time.sleep(random.uniform(300, 600))  # Thời gian nghỉ ngẫu nhiên giữa các lượt
+    time.sleep(random.uniform(300, 360))  # Thời gian nghỉ ngẫu nhiên giữa các lượt
 
 driver.quit()
