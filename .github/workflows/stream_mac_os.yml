@@ -2,8 +2,8 @@ name: Streamtape mac
 
 on:
   workflow_dispatch:
-  # schedule:
-  #    - cron: '*/11 * * * *'
+  schedule:
+     - cron: '*/11 * * * *'
 
 
 jobs:
