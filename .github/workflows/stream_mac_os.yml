@@ -33,8 +33,8 @@ jobs:
           install-dependencies: true
           install-chromedriver: true
       
-      - name: After Set up Chrome
-        run: chrome --version
+      - uses: browser-actions/setup-chrome@v1
+      - run: chrome --version
 
       # - name: Set CHROMEDRIVER_PATH environment variable
       #   run: |
