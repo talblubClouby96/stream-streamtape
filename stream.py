@@ -26,9 +26,9 @@ link_list = [
     "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4",
     "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4"
 ]
-time.sleep(random.uniform(60, 200))
+time.sleep(random.uniform(60, 150))
 # Lựa chọn 3 liên kết ngẫu nhiên
-selected_links = random.sample(link_list, 2)
+selected_links = random.sample(link_list, 1)
 
 # Khởi tạo driver
 options = webdriver.ChromeOptions()
@@ -104,7 +104,7 @@ for link in selected_links:
             break
 
     driver.save_screenshot("screenshot_{}.png".format(time.time()))
-    time.sleep(random.uniform(300, 400))  # Thời gian nghỉ ngẫu nhiên giữa các lượt
+    time.sleep(random.uniform(300, 360))  # Thời gian nghỉ ngẫu nhiên giữa các lượt
 
 driver.quit()
 
