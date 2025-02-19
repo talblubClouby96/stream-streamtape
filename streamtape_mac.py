@@ -26,7 +26,10 @@ link_list = [
     "https://streamtape.com/v/VBQXaqQdPOTKrRp/TikTok_Id_inuya299_2025_02_02_14_42_51.mp4",
     "https://streamtape.com/v/llJbWp2epRC7MDA/TikTok_Id_inuya299_2025_02_03_14_34_25.mp4",
     "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4",
-    "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4"
+    "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4",
+    "https://streamtape.com/v/kkGjqMV8ekCOxLd/TikTok_Id_inuya299_2025_02_04_14_11_21.mp4",
+    "https://streamtape.com/v/g0mmA6exWvCqby0/TikTok_Id_inuya299_2025_02_05_14_30_41.mp4",
+    "https://streamtape.com/v/BjM3DBebvvTyker/TikTok_Id_inuya299_2025_02_01_05_02_26.mp4"
 ]
 
 import chromedriver_autoinstaller
