@@ -19,8 +19,8 @@ jobs:
         with:
            python-version: '3.10'
         
-      # - name: Install dependencies
-      #   run: pip install undetected-chromedriver selenium google-colab-selenium pyautogui fake-useragent
+      - name: Install dependencies
+        run: pip install undetected-chromedriver selenium chromedriver-autoinstaller pyautogui fake-useragent
       
       # - name: Before Set up Chrome
       #   run: chrome --version
@@ -33,15 +33,13 @@ jobs:
           install-dependencies: true
           install-chromedriver: true
       
-      - uses: browser-actions/setup-chrome@v1
-      - run: chrome --version
 
       # - name: Set CHROMEDRIVER_PATH environment variable
       #   run: |
       #     echo "CHROMEDRIVER_PATH=${{ steps.setup-chrome.outputs.chrome-path }}/chromedriver" >> $GITHUB_ENV
 
-      # - name: Run Selenium script
-      #   run:  python streamtape_mac.py
+      - name: Run Selenium script
+        run:  python streamtape_mac.py
         
       # - name: Archive screenshots
       #   uses: actions/upload-artifact@v4
