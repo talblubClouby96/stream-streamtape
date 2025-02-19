@@ -29,11 +29,10 @@ link_list = [
     "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4"
 ]
 
-import google_colab_selenium as gs
+import chromedriver_autoinstaller
 
-driver = gs.Chrome()
-driver.get("https://www.dailymotion.com/playlist/x9dd5m")
-driver.quit()
+
+chromedriver_autoinstaller.install()
 
 time.sleep(random.uniform(60, 200))
 # Lựa chọn 3 liên kết ngẫu nhiên
