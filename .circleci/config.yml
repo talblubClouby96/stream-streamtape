@@ -1,0 +1,49 @@
+version: 2.1
+
+orbs:
+  win: circleci/windows@5.0.0  # Sử dụng Windows Orb
+
+jobs:
+  capture_screenshots:
+    parameters:
+      instance:
+        type: integer
+    executor:
+      name: win/default
+      size: "medium"  # Có thể đổi: "medium", "large", "xlarge", "2xlarge"
+    steps:
+      - checkout
+
+      - run:
+          name: Cài đặt Python
+          command: |
+            choco install python --version=3.10 -y
+            refreshenv
+            python -m pip install --upgrade pip
+
+      - run:
+          name: Cài đặt thư viện Python
+          command: |
+            pip install undetected-chromedriver selenium pyvirtualdisplay pyautogui fake-useragent
+
+      - run:
+          name: Chạy script Selenium (Instance << parameters.instance >>)
+          command: python stream.py
+
+      - store_artifacts:
+          path: screenshots
+          destination: screenshots-instance-<< parameters.instance >>
+
+workflows:
+  scheduled_run:
+    triggers:
+      - schedule:
+          cron: "*/11 * * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - capture_screenshots:
+          matrix:
+            parameters:
+              instance: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  # Chạy 10 instance song song
