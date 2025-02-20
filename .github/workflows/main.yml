@@ -3,7 +3,8 @@ name: Streamtape windows
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/11 * * * *'
+    - cron: ' "0,10,20,30,40,50 * * * *"'
+    # - cron: '*/11 * * * *'
 
 
 jobs:
