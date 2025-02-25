@@ -133,15 +133,36 @@ def main():
     
     driver.implicitly_wait(10)
     
-    links = []
-    while len(links) < 20:
-        elements = driver.find_elements(By.XPATH, '//a[@id="video-title-link"]')
-        new_links = [element.get_attribute('href') for element in elements]
-        links.extend([link for link in new_links if link not in links])
-        print(f"Number of unique links: {len(links)}")
-        scroll_down(driver)
+    links = [
+    "https://youtu.be/zrNUbj49BMo",
+    "https://youtu.be/xiwMYBWO7OI",
+    "https://youtu.be/udLdYa4kSoA", 
+    "https://youtu.be/tq3_LHy9R4g", 
+    "https://youtu.be/kiVJynu9Sm8", 
+    "https://youtu.be/dGjhFJXiJGM", 
+    "https://youtu.be/dBe_CmjtByc", 
+    "https://youtu.be/UE3vwgqrfpE", 
+    "https://youtu.be/RlR7ZRrYiQQ", 
+    "https://youtu.be/0lo0L1ZPAjg",
+    "https://youtu.be/z4txNip7--s", 
+    "https://youtu.be/woHcOwiFNTA", 
+    "https://youtu.be/wIDKLVcgi1c", 
+    "https://youtu.be/v9Ezc8KnRUU", 
+    "https://youtu.be/r0N_GACPUpY", 
+    "https://youtu.be/e1YN4Dg-_c8", 
+    "https://youtu.be/cXeBI0tClok", 
+    "https://youtu.be/U_ifUc74w-U", 
+    "https://youtu.be/U_ifUc74w-U", 
+    "https://youtu.be/MgJPWB6rnII", 
+    ]
+    # while len(links) < 20:
+    #     elements = driver.find_elements(By.XPATH, '//a[@id="video-title-link"]')
+    #     new_links = [element.get_attribute('href') for element in elements]
+    #     links.extend([link for link in new_links if link not in links])
+    #     print(f"Number of unique links: {len(links)}")
+    #     scroll_down(driver)
     
-    driver.quit()
+    # driver.quit()
 
     shuffle(links)
     
