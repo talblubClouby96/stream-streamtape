@@ -1,5 +1,7 @@
 import time
 import random
+import threading
+import subprocess
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
@@ -26,7 +28,21 @@ link_list = [
     "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4",
     "https://streamtape.com/v/pddmwejLLaFrovV/TikTok_Id_inuya299_2025_02_08_14_47_29.mp4"
 ]
-time.sleep(random.uniform(60, 150))
+email_list = [
+    ("duongbaotinqom3nqsusfs0@rotitk.us", "Phan9999"),
+    ("tranbaohuynhay6v94ndq1u1@rotitk.us", "Phan9999"),
+    ("lacthanhmaihozztj4te88d@rotitk.us", "Phan9999"),
+    ("uathuyhoangejh1uph3trh1@rotitk.us", "Phan9999"),
+    ("ngotuanngocozybfuvcohqw@rotitk.us", "Phan9999"),
+    ("lacthanhmaihozztj4te88d@rotitk.us", "Phan9999"),
+    ("dangminhdanqqsq1cy5p4lc@rotitk.us", "Phan9999"),
+    ("huynhnamtu5dru7vzjsuxm@rotitk.us", "Phan9999"),
+    ("ngohieuphong8mx04c4nyqu1@rotitk.us", "Phan9999"),
+    ("phamthienanmyw9yn1bqbka@rotitk.us", "Phan9999"),
+    ("tonghoangphat0t6efwjfjx3w@rotitk.us", "Phan9999"),
+]
+
+time.sleep(random.uniform(60, 120))
 # Lựa chọn 3 liên kết ngẫu nhiên
 selected_links = random.sample(link_list, 1)
 
@@ -57,54 +73,62 @@ def random_mouse_move():
         print(f"Error: {e}")
         driver.execute_script("window.scrollBy(0, 250);")
         time.sleep(1)
+        
+def run_my_selenium2(email, password):
+    command = ["python", "youtube_stream.py", "--email", email, "--password", password]
+    try:
+        subprocess.run(command, check=True)
+        print(f"youtube_stream.py đã chạy thành công với email: {email}")
+    except subprocess.CalledProcessError as e:
+        print(f"Lỗi khi chạy youtube_stream.py với email {email}: {e}")
 
 
+# Chạy Selenium chính trong một thread
+def run_main_selenium():
+    driver = uc.Chrome(options=options)
+    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 
-# Lặp qua từng liên kết đã chọn
-for link in selected_links:
-    driver.get("https://www.dailymotion.com/playlist/x9dd5m")
-    time.sleep(random.uniform(60, 130))
-    driver.save_screenshot("screenshot_{}.png".format(time.time()))
-    driver.get(link)
-    time.sleep(random.uniform(1, 30))  # Thời gian nghỉ ngẫu nhiên giữa các liên kết
-    random_mouse_move()
+    for link in selected_links:
+        driver.get("https://www.dailymotion.com/playlist/x9dd5m")
+        time.sleep(random.uniform(60, 130))
+        driver.save_screenshot(f"screenshot_main_{time.time()}.png")
 
-    # Chờ video tải
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "plyr")))
+        driver.get(link)
+        time.sleep(random.uniform(1, 30))
+        random_mouse_move(driver)
 
-    # Chơi video
-    play_button_xpath = '//button[@data-plyr="play"]'
-    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, play_button_xpath)))
-    play_button = driver.find_element(By.XPATH, play_button_xpath)
-    driver.execute_script("arguments[0].scrollIntoView(true);", play_button)
-    driver.save_screenshot("screenshot_{}.png".format(time.time()))
+        driver.save_screenshot(f"screenshot_main_{time.time()}.png")
+        time.sleep(random.uniform(300, 360))
 
-    driver.execute_script("""
-        var playButton = document.evaluate('//button[@data-plyr="play"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-        if (playButton) {
-            playButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(function() { playButton.click(); }, 500);
-        }
-    """)
-    time.sleep(5)
-    random_mouse_move()
-    random_mouse_move()
+    driver.quit()
+    print("Selenium chính đã hoàn thành.")
 
-    # Tải video
-    download_button_xpath = '//a[@id="downloadvideo"]'
-    for _ in range(10):
-        try:
-            download_button = driver.find_element(By.XPATH, download_button_xpath)
-            download_button.click()
-            time.sleep(random.uniform(1, 3))
-            random_mouse_move()
-            driver.save_screenshot("screenshot_{}.png".format(time.time()))
-        except Exception as e:
-            print(f"Error: {e}")
-            break
+# Chạy my_selenium2.py
+def run_my_selenium2(email, password):
+    command = ["python", "youtube_stream.py", "--email", email, "--password", password]
+    try:
+        subprocess.run(command, check=True)
+        print(f"youtube_stream.py đã chạy thành công với email: {email}")
+    except subprocess.CalledProcessError as e:
+        print(f"Lỗi khi chạy youtube_stream.py với email {email}: {e}")
 
-    driver.save_screenshot("screenshot_{}.png".format(time.time()))
-    time.sleep(random.uniform(300, 360))  # Thời gian nghỉ ngẫu nhiên giữa các lượt
+# Khởi tạo và chạy thread Selenium chính
+main_thread = threading.Thread(target=run_main_selenium)
+main_thread.start()
 
-driver.quit()
+# Khởi chạy các thread của my_selenium2.py
+threads = []
+for email, password in email_list:
+    thread = threading.Thread(target=run_my_selenium2, args=(email, password))
+    threads.append(thread)
+    thread.start()
+
+# Chờ tất cả các thread hoàn thành
+for thread in threads:
+    thread.join()
+
+# Chờ Selenium chính hoàn thành
+main_thread.join()
+
+print("Tất cả các quá trình đã hoàn tất.")
 
