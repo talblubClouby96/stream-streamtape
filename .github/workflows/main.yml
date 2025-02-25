@@ -24,7 +24,7 @@ jobs:
            python-version: '3.10'
         
       - name: Install dependencies
-        run: pip install undetected-chromedriver selenium pyvirtualdisplay pyautogui fake-useragent
+        run: pip install undetected-chromedriver selenium pyvirtualdisplay pyautogui fake-useragent chromedriver_autoinstaller
 
       - name: Run Selenium script
         run: python stream.py
