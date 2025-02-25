@@ -46,46 +46,36 @@ time.sleep(random.uniform(60, 120))
 # Lựa chọn 3 liên kết ngẫu nhiên
 selected_links = random.sample(link_list, 1)
 
-# Khởi tạo driver
-options = webdriver.ChromeOptions()
-options.add_argument("--disable-blink-features=AutomationControlled")
-ua = UserAgent()
-options.add_argument(f"user-agent={ua.random}")
-options.add_argument('--start-maximized')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument('--disable-gpu')
-
-driver = uc.Chrome(options=options)
-driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+# Tạo ChromeOptions mới
+def create_chrome_options():
+    options = webdriver.ChromeOptions()
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    ua = UserAgent()
+    options.add_argument(f"user-agent={ua.random}")
+    options.add_argument('--start-maximized')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-gpu')
+    return options
 
 # Di chuyển chuột ngẫu nhiên
-def random_mouse_move():
+def random_mouse_move(driver):
     try:
         window_width = driver.execute_script("return window.innerWidth;")
         window_height = driver.execute_script("return window.innerHeight;")
         action = ActionChains(driver)
-        x_offset = random.randint(-window_width//2, window_width//2)
-        y_offset = random.randint(-window_height//2, window_height//2)
+        x_offset = random.randint(-window_width // 2, window_width // 2)
+        y_offset = random.randint(-window_height // 2, window_height // 2)
         action.move_by_offset(x_offset, y_offset).perform()
-        time.sleep(random.uniform(0.5, 1.5))  # Đảm bảo thời gian di chuyển không quá nhanh
+        time.sleep(random.uniform(0.5, 1.5))
     except WebDriverException as e:
         print(f"Error: {e}")
         driver.execute_script("window.scrollBy(0, 250);")
         time.sleep(1)
-        
-def run_my_selenium2(email, password):
-    command = ["python", "youtube_stream.py", "--email", email, "--password", password]
-    try:
-        subprocess.run(command, check=True)
-        print(f"youtube_stream.py đã chạy thành công với email: {email}")
-    except subprocess.CalledProcessError as e:
-        print(f"Lỗi khi chạy youtube_stream.py với email {email}: {e}")
 
-
-# Chạy Selenium chính trong một thread
+# Chạy Selenium chính
 def run_main_selenium():
-    driver = uc.Chrome(options=options)
+    driver = uc.Chrome(options=create_chrome_options())
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 
     for link in selected_links:
@@ -112,7 +102,7 @@ def run_my_selenium2(email, password):
     except subprocess.CalledProcessError as e:
         print(f"Lỗi khi chạy youtube_stream.py với email {email}: {e}")
 
-# Khởi tạo và chạy thread Selenium chính
+# Khởi chạy thread Selenium chính
 main_thread = threading.Thread(target=run_main_selenium)
 main_thread.start()
 
